@@ -5,15 +5,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { ApolloClient, ApolloProvider } from 'react-apollo'
 
 // app
-import Layout from './layout/Layout';
-import { todoReducer, userReducer } from './reducers'
+import { Layout, LayoutReducer } from './layout';
 
 const client = new ApolloClient()
 
 const store: any = createStore(
     combineReducers({
-        todos: todoReducer,
-        users: userReducer,
+        layout: LayoutReducer,
         apollo: client.reducer()
     }),
     {}, // initial state
@@ -24,11 +22,17 @@ const store: any = createStore(
     )
 )
 
-ReactDOM.render(
+const routes = (
     <ApolloProvider store={store} client={client} >
         <BrowserRouter>
             <Layout />
         </BrowserRouter>
-    </ApolloProvider>,
+    </ApolloProvider>
+);
+
+ReactDOM.render(
+    routes,
     document.getElementById('content')
 )
+
+export default routes;

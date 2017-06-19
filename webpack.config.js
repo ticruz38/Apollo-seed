@@ -4,7 +4,7 @@ var webpack = require('webpack')
 
 module.exports = {
     entry: {
-        app: ['.app/index.tsx'],
+        app: ['app/index.tsx'],
         vendor: ['redux', 'react', 'react-dom', 'react-router', 'moment']
     },
     output: {

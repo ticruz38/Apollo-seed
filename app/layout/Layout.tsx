@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 
 import { Button, Modal, Dropdown } from 'components';
 
 
 
-export default class Layout extends React.Component<any, any> {
+class Layout extends React.Component<any, any> {
 
     get backButton() {
         return (
@@ -72,3 +73,5 @@ export default class Layout extends React.Component<any, any> {
 
 
 import './Layout.scss';
+
+export default connect()(Layout)
