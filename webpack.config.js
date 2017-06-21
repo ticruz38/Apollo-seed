@@ -5,16 +5,23 @@ var webpack = require('webpack')
 module.exports = {
     entry: {
         app: ['app/index.tsx'],
-        vendor: ['redux', 'react', 'react-dom', 'react-router', 'moment']
+        vendors: ['redux', 'react', 'react-dom', 'react-router', 'moment']
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
-        filename: 'bundle.js'
+        filename: '[name].js'
+    },
+
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        publicPath: "http://localhost:8080/"
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: 'eval',
+    devtool: "eval",
+
+    target: "web",
 
     resolve: {
         alias: {
@@ -23,7 +30,7 @@ module.exports = {
             components: path.resolve('./components'),
             models: path.resolve('./models')
         },
-        modules: [path.resolve('.'), 'node_modules'],
+        modules: ["node_modules"],
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.json']
     },
@@ -52,20 +59,14 @@ module.exports = {
                 test: /\.(graphql|gql)$/,
                 exclude: /node_modules/,
                 loader: 'graphql-tag/loader'
-            },
-            {
-                // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'source-map-loader'
             }
         ]
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
+            name: 'vendors',
             minChunks: Infinity,
-            filename: 'vendor.js'
+            filename: '[name].js'
         }),
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin('[name].css')
