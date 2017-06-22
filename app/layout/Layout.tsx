@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
-import { Button, Modal, Dropdown } from 'components';
+import { Button, Modal, Dropdown } from '../../components';
 
 
 

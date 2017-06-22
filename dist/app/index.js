@@ -1,4 +1,5 @@
 "use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const ReactDOM = require("react-dom");
@@ -16,7 +17,7 @@ redux_1.compose(redux_1.applyMiddleware(client.middleware())
 // If you are using the devToolsExtension, you can add it here also
 //   (typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined') ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
 ));
-ReactDOM.render(React.createElement(react_apollo_1.ApolloProvider, { store: store, client: client },
-    React.createElement(react_router_dom_1.BrowserRouter, null,
-        React.createElement(layout_1.Layout, null))), document.getElementById('content'));
+const routes = React.createElement(react_apollo_1.ApolloProvider, { store: store, client: client }, React.createElement(react_router_dom_1.BrowserRouter, null, React.createElement(layout_1.Layout, null)));
+ReactDOM.render(routes, document.getElementById('content'));
+exports.default = routes;
 //# sourceMappingURL=/Users/tduchene/Code/apollo/app/index.js.map

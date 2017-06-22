@@ -1,0 +1,15 @@
+{
+    "env": {
+        "server": {
+            "plugins": [
+                [
+                    "css-modules-transform", {
+                        "preprocessCss": "sass-loader",
+                        "generateScopedName": "[hash:8]",
+                        "extensions": [".scss"]
+                    }
+                ]
+            ]
+        }
+    }
+}
