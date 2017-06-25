@@ -25,3 +25,5 @@ export default (props: {onClose?: Function, setModal?: Function, children?: any,
         </div>
     );
 }
+
+import './Modal.scss';

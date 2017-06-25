@@ -8,7 +8,11 @@ const redux_1 = require("redux");
 const react_apollo_1 = require("react-apollo");
 // app
 const layout_1 = require("./layout");
-const client = new react_apollo_1.ApolloClient();
+const client = new react_apollo_1.ApolloClient({
+    networkInterface: react_apollo_1.createNetworkInterface({
+        uri: 'http://localhost:3000/graphql'
+    })
+});
 const store = redux_1.createStore(redux_1.combineReducers({
     layout: layout_1.LayoutReducer,
     apollo: client.reducer()
@@ -17,7 +21,7 @@ redux_1.compose(redux_1.applyMiddleware(client.middleware())
 // If you are using the devToolsExtension, you can add it here also
 //   (typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined') ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
 ));
-const routes = React.createElement(react_apollo_1.ApolloProvider, { store: store, client: client }, React.createElement(react_router_dom_1.BrowserRouter, null, React.createElement(layout_1.Layout, null)));
-ReactDOM.render(routes, document.getElementById('content'));
+const routes = React.createElement(react_apollo_1.ApolloProvider, { store: store, client: client }, React.createElement(react_router_dom_1.HashRouter, null, React.createElement(react_router_dom_1.Route, { path: "/", component: props => React.createElement(layout_1.Layout, Object.assign({}, props)) })));
+ReactDOM.render(routes, document.getElementById('app'));
 exports.default = routes;
-//# sourceMappingURL=/Users/tduchene/Code/apollo/app/index.js.map
+//# sourceMappingURL=index.js.map

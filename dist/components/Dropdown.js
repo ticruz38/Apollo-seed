@@ -17,5 +17,5 @@ class Dropdown extends React.Component {
     }
 }
 
-//# sourceMappingURL=/Users/tduchene/Code/apollo/components/Dropdown.js.map
+//# sourceMappingURL=Dropdown.js.map
 exports.default = Dropdown;

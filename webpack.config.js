@@ -1,5 +1,6 @@
 var path = require('path')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var webpack = require('webpack')
 
 module.exports = {
@@ -19,13 +20,14 @@ module.exports = {
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "eval",
+    devtool: "source-map",
 
     target: "web",
 
     resolve: {
         alias: {
             app: path.resolve('./app'),
+            utils: path.resolve('./utils'),
             public: path.resolve('./public'),
             components: path.resolve('./components'),
             models: path.resolve('./models')
@@ -69,6 +71,10 @@ module.exports = {
             filename: '[name].js'
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('[name].css')
+        new ExtractTextPlugin('[name].css'),
+        new HtmlWebpackPlugin({
+            title: "Apollo",
+            template: "index.html"
+        })
     ]
 }

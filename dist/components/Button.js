@@ -41,5 +41,5 @@ Button.defaultProps = {
     mode: 'default'
 };
 
-//# sourceMappingURL=/Users/tduchene/Code/apollo/components/Button.js.map
+//# sourceMappingURL=Button.js.map
 exports.default = Button;

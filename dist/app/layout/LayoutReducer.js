@@ -1,15 +1,13 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = require("react");
-const Loader_1 = require("./visuals/Loader");
 const initialState = {
-    modal: false,
+    modal: null,
     loading: false,
     toolbar: null,
-    loader: React.createElement(Loader_1.default, { size: "3em" })
+    loader: null
 };
-exports.toggleModal = bool => ({ type: "TOGGLE_MODAL", value: bool });
+exports.toggleModal = value => ({ type: "TOGGLE_MODAL", value: value });
 exports.toggleLoading = bool => ({ type: "TOGGLE_LOADING", value: bool });
 exports.setToolbar = toolbar => ({ type: "TOGGLE_MODAL", value: toolbar });
 exports.default = (state = initialState, action) => {
@@ -20,6 +18,8 @@ exports.default = (state = initialState, action) => {
             return Object.assign({}, state, { loading: action.value });
         case "SET_TOOLBAR":
             return Object.assign({}, state, { toolbar: action.value });
+        default:
+            return state;
     }
 };
-//# sourceMappingURL=/Users/tduchene/Code/apollo/app/layout/LayoutReducer.js.map
+//# sourceMappingURL=LayoutReducer.js.map

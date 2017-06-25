@@ -1,13 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link} from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Link} from 'react-router-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import { ApolloClient, ApolloProvider } from 'react-apollo'
+import { ApolloClient, ApolloProvider, createNetworkInterface } from 'react-apollo'
 
 // app
 import { Layout, LayoutReducer } from './layout';
 
-const client = new ApolloClient()
+const client = new ApolloClient({
+    networkInterface: createNetworkInterface({
+        uri: 'http://localhost:3000/graphql',
+    })
+})
 
 const store: any = createStore(
     combineReducers({
@@ -24,15 +28,15 @@ const store: any = createStore(
 
 const routes = (
     <ApolloProvider store={store} client={client} >
-        <BrowserRouter>
-            <Layout />
-        </BrowserRouter>
+        <HashRouter>
+            <Route path="/" component={ props => <Layout {...props} /> } />
+        </HashRouter>
     </ApolloProvider>
 );
 
 ReactDOM.render(
     routes,
-    document.getElementById('content')
+    document.getElementById('app')
 )
 
 export default routes;

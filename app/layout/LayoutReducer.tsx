@@ -2,15 +2,15 @@ import * as React from 'react';
 import Loader from './visuals/Loader';
 
 const initialState = {
-    modal: false,
+    modal: null,
     loading: false,
     toolbar: null,
-    loader: <Loader size="3em" />,
+    loader: null,
 }
 
-export const toggleModal = (bool: boolean) => ( { type: "TOGGLE_MODAL", value: bool } );
+export const toggleModal = (value?: React.ReactElement< any >) => ( { type: "TOGGLE_MODAL", value: value } );
 export const toggleLoading = (bool: boolean) => ( { type: "TOGGLE_LOADING", value: bool } );
-export const setToolbar = (toolbar: React.ReactElement< any >) => ( { type: "TOGGLE_MODAL", value: toolbar } );
+export const setToolbar = (toolbar?: React.ReactElement< any >) => ( { type: "TOGGLE_MODAL", value: toolbar } );
 
 
 export default (state = initialState, action) => {
@@ -21,5 +21,7 @@ export default (state = initialState, action) => {
             return { ...state, loading: action.value }
         case "SET_TOOLBAR":
             return { ...state, toolbar: action.value }
+        default: 
+            return state
     }
 }

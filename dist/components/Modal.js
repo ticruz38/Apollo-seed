@@ -3,6 +3,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const classnames = require("classnames");
+
+//# sourceMappingURL=Modal.js.map
 exports.default = props => {
     if (!props.children) return null;
     const close = e => {
@@ -15,4 +17,3 @@ exports.default = props => {
     };
     return React.createElement("div", { id: "wrapper", className: classnames('modal', { unclosable: props.unclosable }), onClick: e => props.unclosable ? '' : close(e) }, props.children);
 };
-//# sourceMappingURL=/Users/tduchene/Code/apollo/components/Modal.js.map

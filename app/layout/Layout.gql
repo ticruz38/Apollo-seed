@@ -1,0 +1,7 @@
+query hello {
+  hello
+}
+
+mutation helloWorld {
+    putHello
+}
