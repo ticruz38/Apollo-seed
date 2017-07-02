@@ -1,6 +1,16 @@
 import * as React from 'react';
 import Loader from './visuals/Loader';
 
+export type LayoutState = {
+    modal: boolean,
+    loading: boolean,
+    toolbar?: any,
+    loader?: any,
+    backRoute?: any,
+    title?: any,
+    backgroundImage?: any 
+}
+
 const initialState = {
     modal: null,
     loading: false,

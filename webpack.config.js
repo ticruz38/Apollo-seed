@@ -5,7 +5,7 @@ var webpack = require('webpack')
 
 module.exports = {
     entry: {
-        app: ['app/index.tsx'],
+        app: ['./index.ts'],
         vendors: ['redux', 'react', 'react-dom', 'react-router', 'moment']
     },
     output: {
@@ -16,7 +16,8 @@ module.exports = {
 
     devServer: {
         contentBase: path.join(__dirname, "dist"),
-        publicPath: "http://localhost:8080/"
+        publicPath: "http://localhost:8080/",
+        hot: true
     },
 
     // Enable sourcemaps for debugging webpack's output.

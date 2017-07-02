@@ -26,17 +26,12 @@ const store: any = createStore(
     )
 )
 
-const routes = (
+export const App = () => <Route path="/" component={ Layout } />
+
+export default (
     <ApolloProvider store={store} client={client} >
-        <HashRouter>
-            <Route path="/" component={ props => <Layout {...props} /> } />
-        </HashRouter>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </ApolloProvider>
 );
-
-ReactDOM.render(
-    routes,
-    document.getElementById('app')
-)
-
-export default routes;

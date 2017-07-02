@@ -1,17 +1,20 @@
 import * as React from 'react'
-import { Route } from 'react-router'
-import { connect } from 'react-redux'
-import { graphql, withApollo, compose } from 'react-apollo'
+import { Route, RouteComponentProps } from 'react-router'
+import { connect, DispatchProp } from 'react-redux'
+import { graphql, withApollo, compose, gql } from 'react-apollo'
 import * as classnames from 'classnames'
 
 import * as actions from './LayoutReducer'
+import { LayoutState } from './LayoutReducer'
 import { DocumentParser } from 'utils';
 import { Button, Modal, Dropdown } from '../../components'
 
 // import LayoutQuery from './Layout.gql';
 const Document = new DocumentParser(require('./Layout.gql'));
 
-class Layout extends React.Component<any, any> {
+
+
+class Layout extends React.Component< DispatchProp<any> & LayoutState & RouteComponentProps<any>, any> {
     get backButton() {
         return (
             <Button
@@ -95,9 +98,11 @@ class Layout extends React.Component<any, any> {
     }
 }
 
-export default compose(
-    graphql(Document.get("hello"), { name: 'hello'}),
-    connect(props => props.layout),
-    graphql(Document.get("helloWorld"), { name: 'helloWorld'})
+export default compose< any, any, any, any>(
+    graphql( Document.get('hello') ),
+    graphql( Document.get('helloWorld') ),
+    connect(props => props.layout)
 )(Layout)
+
+
 import './Layout.scss'
