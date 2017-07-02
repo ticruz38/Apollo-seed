@@ -3,5 +3,5 @@ import routes from 'app'
 
 ReactDOM.render(
     routes,
-    document.getElementById('app')
+    document.getElementById('content')
 )

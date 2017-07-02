@@ -20,6 +20,6 @@ redux_1.compose(redux_1.applyMiddleware(client.middleware())
 // If you are using the devToolsExtension, you can add it here also
 //   (typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined') ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
 ));
-const routes = React.createElement(react_apollo_1.ApolloProvider, { store: store, client: client }, React.createElement(react_router_dom_1.BrowserRouter, null, React.createElement(react_router_dom_1.Route, { path: "/", component: layout_1.Layout })));
-exports.default = routes;
+exports.App = () => React.createElement(react_router_dom_1.Route, { path: "/", component: layout_1.Layout });
+exports.default = React.createElement(react_apollo_1.ApolloProvider, { store: store, client: client }, React.createElement(react_router_dom_1.BrowserRouter, null, React.createElement(exports.App, null)));
 //# sourceMappingURL=index.js.map

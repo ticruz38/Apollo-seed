@@ -7,10 +7,9 @@ const react_redux_1 = require("react-redux");
 const react_apollo_1 = require("react-apollo");
 const classnames = require("classnames");
 const actions = require("./LayoutReducer");
-const utils_1 = require("utils");
 const components_1 = require("../../components");
 // import LayoutQuery from './Layout.gql';
-const Document = new utils_1.DocumentParser(require('./Layout.gql'));
+// const Document = new DocumentParser(require('./Layout.gql'));
 class Layout extends React.Component {
     get backButton() {
         return React.createElement(components_1.Button, { message: this.props.backRoute, icon: React.createElement("i", { className: "material-icons" }, "keyboard_arrow_left"), to: this.props.backRoute, className: classnames('back-button', { hidden: !this.props.backRoute }) });
@@ -34,4 +33,4 @@ class Layout extends React.Component {
 }
 
 //# sourceMappingURL=Layout.js.map
-exports.default = react_apollo_1.compose(react_apollo_1.graphql(Document.get('hello')), react_apollo_1.graphql(Document.get('helloWorld')), react_redux_1.connect(props => props.layout))(Layout);
+exports.default = react_apollo_1.compose(react_apollo_1.graphql(react_apollo_1.gql`query hello { hello }`), react_apollo_1.graphql(react_apollo_1.gql`mutation helloWorld { putHello }`), react_redux_1.connect(props => props.layout))(Layout);

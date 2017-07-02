@@ -30,6 +30,7 @@ module.exports = {
             app: path.resolve('./app'),
             utils: path.resolve('./utils'),
             public: path.resolve('./public'),
+            dist: path.resolve('./dist'),
             components: path.resolve('./components'),
             models: path.resolve('./models')
         },
@@ -72,10 +73,6 @@ module.exports = {
             filename: '[name].js'
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('[name].css'),
-        new HtmlWebpackPlugin({
-            title: "Apollo",
-            template: "index.html"
-        })
+        new ExtractTextPlugin('[name].css')
     ]
 }

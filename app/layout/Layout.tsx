@@ -10,7 +10,7 @@ import { DocumentParser } from 'utils';
 import { Button, Modal, Dropdown } from '../../components'
 
 // import LayoutQuery from './Layout.gql';
-const Document = new DocumentParser(require('./Layout.gql'));
+// const Document = new DocumentParser(require('./Layout.gql'));
 
 
 
@@ -69,7 +69,7 @@ class Layout extends React.Component< DispatchProp<any> & LayoutState & RouteCom
                                     button={
                                         <Button
                                             message="Log-In"
-                                            to="signin"
+                                            to="/signin"
                                         />
                                     }
                                     list={[]}
@@ -99,8 +99,8 @@ class Layout extends React.Component< DispatchProp<any> & LayoutState & RouteCom
 }
 
 export default compose< any, any, any, any>(
-    graphql( Document.get('hello') ),
-    graphql( Document.get('helloWorld') ),
+    graphql( gql`query hello { hello }` ),
+    graphql( gql`mutation helloWorld { putHello }` ),
     connect(props => props.layout)
 )(Layout)
 

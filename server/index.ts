@@ -1,20 +1,23 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom/server'
-import { match, StaticRouter } from 'react-router'
-import * as express from 'express';
-import webpack from 'webpack';
+import'module-alias/register'
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
-import renderer from './renderer';
-import appConfig from 'config';
+import * as express from 'express'
+import * as bodyParser from 'body-parser'
+
+const webpack = require('webpack')
+
+const webpackConfig = require('../webpack.config.js')
+const webpackCompiler = webpack(webpackConfig)
+
+
+import renderer from './renderer'
+import appConfig from 'config'
 
 const favicon = require('serve-favicon')
 
 const app = express()
-
-const webpack = require('webpack')
-const webpackConfig = require('webpack.config.js')
-const webpackCompiler = webpack(webpackConfig)
-
+app.use(bodyParser.json())
 app.use(
     require('webpack-dev-middleware')(webpackCompiler, {
         publicPath: webpackConfig.output.publicPath,
@@ -34,12 +37,12 @@ app.use(favicon('public/favicon.ico'))
 
 app.use('/public', express.static('public'))
 
-app.use(renderer);
+app.get('*', renderer )
 
-app.listen(appConfig.port, appConfig.host, err => {
+app.listen( appConfig.PORT, appConfig.HOST, err => {
     if (err) {
         console.error(err)
     } else {
-        console.info(`Listening at http://${appConfig.host}:${appConfig.port}`)
+        console.info(`Listening at http://${appConfig.HOST}:${appConfig.PORT}`)
     }
 })

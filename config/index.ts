@@ -1,5 +1,7 @@
 export default {
-    port: "8000",
-    host: "localhost",
-    apiUrl: "localhost:3000"
+    PORT: 8080,
+    HOST: "localhost",
+    API_URL: "http://localhost:3000",
+    APP_TITLE: "Apollo",
+    FRONT_END_URL: "http://localhost:8080"
 }

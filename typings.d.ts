@@ -8,5 +8,3 @@ declare module '*.gql' {
 interface NodeRequire {
   ensure: (paths: string[], callback: (require: <T>(path: string) => T) => void) => void;
 }
-
-declare const require: any

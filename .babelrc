@@ -2,6 +2,7 @@
     "env": {
         "server": {
             "plugins": [
+                "babel-plugin-inline-import-graphql-ast",
                 [
                     "css-modules-transform", {
                         "preprocessCss": "sass-loader",
