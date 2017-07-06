@@ -14,7 +14,6 @@ import config from 'config'
 const renderer = Router()
 
 renderer.use((req, res) => {
-    // console.log('hello req', req.headers)
     const client: any = new ApolloClient({
         ssrMode: true,
         // Remember that this is the interface the SSR server will use to connect to the
@@ -23,8 +22,6 @@ renderer.use((req, res) => {
             uri: config.API_URL + '/graphql',
             opts: {
                 credentials: 'same-origin',
-                // transfer request headers to networkInterface so that they're accessible to proxy server
-                // Addresses this issue: https://github.com/matthew-andrews/isomorphic-fetch/issues/83
                 headers: { ...req.headers, accept: 'application/json' }
             }
         })

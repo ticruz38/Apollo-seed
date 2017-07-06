@@ -2,19 +2,22 @@ import'module-alias/register'
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
+// modules
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
+import * as favicon from 'serve-favicon'
 
+// app
+import renderer from './renderer'
+import appConfig from 'config'
+
+// webpackcompiler
 const webpack = require('webpack')
-
 const webpackConfig = require('../webpack.config.js')
 const webpackCompiler = webpack(webpackConfig)
 
 
-import renderer from './renderer'
-import appConfig from 'config'
 
-const favicon = require('serve-favicon')
 
 const app = express()
 app.use(bodyParser.json())
