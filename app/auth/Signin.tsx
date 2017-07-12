@@ -5,17 +5,14 @@ import { reduxForm, FormProps } from 'redux-form';
 
 
 
-export class Signin extends React.Component< FormProps<FormData any, any >, any > {
-
-
-    render(): React.ReactElement< * > {
-        return (
+const Signin = (props: any) => {
+    return (
             <form className="signin">
 
             </form>
         );
-    }
 }
+
 
 
 const validate = values => {
