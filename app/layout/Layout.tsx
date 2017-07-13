@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Route, RouteComponentProps } from 'react-router'
+import { compose } from 'redux';
 import { connect, DispatchProp } from 'react-redux'
-import { graphql, withApollo, compose, gql } from 'react-apollo'
 import * as classnames from 'classnames'
 
 import * as actions from './LayoutReducer'
@@ -68,7 +68,7 @@ class Layout extends React.Component< DispatchProp<any> & LayoutState & RouteCom
                                 <Dropdown
                                     button={
                                         <Button
-                                            message="Log-In"
+                                            message="Sign-In"
                                             to="/signin"
                                         />
                                     }
@@ -98,9 +98,7 @@ class Layout extends React.Component< DispatchProp<any> & LayoutState & RouteCom
     }
 }
 
-export default compose< any, any, any, any>(
-    graphql( gql`query hello { hello }` ),
-    graphql( gql`mutation helloWorld { putHello }` ),
+export default compose< any >(
     connect(props => props.layout)
 )(Layout)
 

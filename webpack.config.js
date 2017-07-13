@@ -73,6 +73,10 @@ module.exports = {
             filename: '[name].js'
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('[name].css')
+        new ExtractTextPlugin('[name].css'),
+        new HtmlWebpackPlugin({
+            title: "Apollo",
+            template: "index.html"
+        })
     ]
 }
